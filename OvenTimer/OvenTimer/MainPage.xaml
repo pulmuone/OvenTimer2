@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:OvenTimer.ViewModels"
+             x:Class="OvenTimer.MainPage" 
+             Title="경주 불국빵 - 오븐 타이머">
+
+    <!--<ContentPage.Content>
+        --><!--<Grid Margin="5,5,5,5"
+              RowSpacing="0"
+              ColumnSpacing="0"
+              RowDefinitions = "1*, 1*, 1*"
+              ColumnDefinitions ="*">
+
+            <Button Grid.Row="0" x:Name="Oven1Button" Text="오븐 1" FontSize="Medium" Clicked="Oven1Button_Clicked"/>
+            <Button Grid.Row="1" x:Name="Oven2Button" Text="오븐 2" FontSize="Medium" />
+            <Button Grid.Row="2" x:Name="Oven3Button" Text="오븐 3" FontSize="Medium" />
+
+        </Grid>--><!--
+    </ContentPage.Content>-->
+    <ContentPage.BindingContext>
+        <vm:OvenViewModel x:Name="vm"/>
+    </ContentPage.BindingContext>
+    <CarouselView ItemsSource="{Binding Ovens}" PeekAreaInsets="50" >
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout>
+                    <Frame HasShadow="True" BorderColor="DarkGray"
+                           CornerRadius="5" Margin="20" HeightRequest="340"
+                           HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                        <StackLayout>
+                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Large"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Image Source="{Binding ImageUrl}" 
+                                   Aspect="AspectFit"  HeightRequest="200"  HorizontalOptions="Center" />
+                            <ImageButton Clicked="ImageButton_Clicked"  Source="timer2_96.png" Aspect="AspectFit" 
+                                    HorizontalOptions="Center" VerticalOptions="Center" 
+                                    BorderWidth="2" BorderColor="Black"/>
+                            <!--<Label Text="{Binding Location}" HorizontalOptions="Center" />
+                            <Label Text="{Binding Details}" FontAttributes="Italic"
+                                   HorizontalOptions="Center" MaxLines="5" LineBreakMode="TailTruncation" />-->
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+</ContentPage>

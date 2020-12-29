@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:renderers="clr-namespace:OvenTimer.Renderers"
+             x:Class="OvenTimer.Views.OvenPage2"
+             Title="10단 쿠키오븐">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid Margin="30" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--<Label Text="EVENTS" FontSize="24" FontAttributes="Bold" TextColor="Black" VerticalOptions="Center"/>-->
+                <CollectionView x:Name="eventList" Grid.Row="1" ItemsLayout="VerticalList" ItemsSource="{Binding}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                <Frame HasShadow="True" CornerRadius="15" Margin="0,5" Padding="10" HeightRequest="150" 
+                                       BackgroundColor="{Binding BgColor}">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="clock.png" Aspect="AspectFit" HorizontalOptions="End"/>
+                                        <StackLayout Orientation="Horizontal" Grid.Row="0" HorizontalOptions="Center" Margin="0" Spacing="10">
+                                            <StackLayout>
+                                                <Label Text="{Binding Hours}" FontSize="45" TextColor="White" FontAttributes="Bold" />
+                                                <Label Text="HOURS" FontSize="10" TextColor="White" Opacity="0.5" Margin="0,-5,0,0"/>
+                                            </StackLayout>
+                                            <StackLayout>
+                                                <Label Text=":" FontSize="45" FontAttributes="Bold" TextColor="White"  />
+                                            </StackLayout>
+                                            <StackLayout>
+                                                <Label Text="{Binding Minutes}" FontSize="45" FontAttributes="Bold" TextColor="White" />
+                                                <Label Text="MINUTES" FontSize="10" TextColor="White" Opacity="0.5"  Margin="0,-5,0,0"/>
+                                            </StackLayout>
+                                            <StackLayout>
+                                                <Label Text=":" FontSize="45" FontAttributes="Bold" TextColor="White" />
+                                            </StackLayout>
+                                            <StackLayout>
+                                                <Label Text="{Binding Seconds}" FontSize="45" FontAttributes="Bold" TextColor="White" />
+                                                <Label Text="SECONDS" FontSize="10" TextColor="White" Opacity="0.5" Margin="0,-5,0,0"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" 
+                                                     Margin="-50" Spacing="10" HeightRequest="60">
+                                            <Button x:Name="testButton" Text="시작" FontSize="18" TextColor="Blue" WidthRequest="70" Clicked="btnStart_Clicked"/>
+                                            <Button Text="종료" FontSize="18" TextColor="Red" WidthRequest="70" Clicked="btnStop_Clicked"/>
+                                            <Label Text="{Binding TimerLabel}" VerticalOptions="Center" FontSize="30" TextColor="White" FontAttributes="Bold" />
+                                            <Button x:Name="TimerSet" Text="설정" FontSize="18"  WidthRequest="70" TextColor="Green" Clicked="TimerSet_Clicked"/>
+                                            <!--<renderers:ExtendTimePicker VisualStateManager.VisualStateGroups="" ext="{Binding Seconds}"  />-->
+                                            <!--<Button Text="설정" FontSize="18" TextColor="Green" WidthRequest="70" Clicked="btnReset_Clicked"/>-->
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
